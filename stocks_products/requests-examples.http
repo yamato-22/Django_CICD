@@ -1,0 +1,115 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api/v1
+
+# создание продукта
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "Конфеты",
+  "description": "в коробке"
+}
+
+###
+
+# получение продуктов
+GET {{baseUrl}}/products/
+Content-Type: application/json
+
+###
+
+# обновление продукта
+PATCH {{baseUrl}}/products/1/
+Content-Type: application/json
+
+{
+  "description": "Самые сочные и ароматные помидорки"
+}
+
+###
+
+# удаление продукта
+DELETE {{baseUrl}}/products/2/
+Content-Type: application/json
+
+###
+
+# поиск продуктов по названию и описанию
+GET {{baseUrl}}/products/?search=груш
+Content-Type: application/json
+
+###
+
+# создание склада с продуктами
+POST {{baseUrl}}/stocks/
+Content-Type: application/json
+
+{
+  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "positions": [
+    {
+      "product": 4,
+      "quantity": 250,
+      "price": 120.50
+    },
+    {
+      "product": 3,
+      "quantity": 100,
+      "price": 180
+    }
+  ]
+}
+
+###
+
+# удаление склада с продуктами
+DELETE {{baseUrl}}/stocks/1/
+Content-Type: application/json
+
+###
+
+# запрос складов
+GET {{baseUrl}}/stocks/
+Content-Type: application/json
+
+###
+
+# обновляем записи на складе
+PATCH {{baseUrl}}/stocks/2/
+Content-Type: application/json
+
+{
+  "address": "Санкт-Петербург, ул.Ломоносова, 80",
+  "positions": [
+    {
+      "product": 1,
+      "quantity": 100,
+      "price": 130.80
+    },
+    {
+      "product": 3,
+      "quantity": 243,
+      "price": 145
+    },
+       {
+      "product": 4,
+      "quantity": 10,
+      "price": 500
+    }
+  ]
+}
+
+###
+
+# поиск складов, где есть определенный продукт
+GET {{baseUrl}}/stocks/?products=4
+Content-Type: application/json
+
+###
+
+# поиск складов, где есть определенный продукт
+GET {{baseUrl}}/stocks/?search=сочн
+Content-Type: application/json
+
+
