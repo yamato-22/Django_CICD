@@ -29,6 +29,3 @@
 GET {{baseUrl}}/stocks/?search=помид
 Content-Type: application/json
 ```
-
-# ЗАДАЧА ВЫПОЛНЕНА.
-(включая дополнительное задание)
