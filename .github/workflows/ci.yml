@@ -43,7 +43,7 @@ jobs:
           python-version: '3.10'
 
       - name: Установка зависимостей
-        run: pip install -r requirements.txt
+        run: pip install -r stocks_products/requirements.txt
 
       - name: Линтинг
         run: flake8 logistic/ --exclude=logistic/migrations
