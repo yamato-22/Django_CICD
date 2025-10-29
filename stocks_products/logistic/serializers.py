@@ -23,7 +23,6 @@ class StockSerializer(serializers.ModelSerializer):
         model = Stock
         fields = ['id', 'address', 'positions']
 
-
     def create(self, validated_data):
         # достаем связанные данные для других таблиц
         positions = validated_data.pop('positions')
@@ -38,7 +37,6 @@ class StockSerializer(serializers.ModelSerializer):
             StockProduct.objects.create(stock=stock, product=product, quantity=quantity, price=price)
 
         return stock
-
 
     def update(self, instance, validated_data):
         # достаем связанные данные для других таблиц
@@ -60,7 +58,7 @@ class StockSerializer(serializers.ModelSerializer):
             price = position.pop('price')
 
             # Проверяем, существует ли такая позиция
-            pos = old_positions.filter(product = product).first()
+            pos = old_positions.filter(product=product).first()
             if pos:
                 pos.quantity = quantity
                 pos.price = price
@@ -72,6 +70,3 @@ class StockSerializer(serializers.ModelSerializer):
         # Удаляем устаревшие позиции
         StockProduct.objects.filter(id__in=old_position_ids).delete()
         return instance
-
-
-
