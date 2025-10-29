@@ -1,0 +1,8 @@
+#!/bin/bash
+
+spawn /home/yamato/Django_CICD/deploy.sh
+expect "yes"
+send -- "yes\r"
+expect "password"
+send -- "123"
+expect eof
