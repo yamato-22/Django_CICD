@@ -34,7 +34,9 @@ class StockSerializer(serializers.ModelSerializer):
             product = position.pop('product')
             quantity = position.pop('quantity')
             price = position.pop('price')
-            StockProduct.objects.create(stock=stock, product=product, quantity=quantity, price=price)
+            StockProduct.objects.create(
+                stock=stock, product=product, quantity=quantity, price=price
+            )
 
         return stock
 
@@ -65,7 +67,12 @@ class StockSerializer(serializers.ModelSerializer):
                 pos.save()
                 old_position_ids.remove(pos.id)
             else:
-                StockProduct.objects.create(stock=instance, product=product, quantity=quantity, price=price)
+                StockProduct.objects.create(
+                    stock=instance,
+                    product=product,
+                    quantity=quantity,
+                    price=price
+                )
 
         # Удаляем устаревшие позиции
         StockProduct.objects.filter(id__in=old_position_ids).delete()
