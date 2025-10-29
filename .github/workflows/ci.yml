@@ -46,7 +46,7 @@ jobs:
         run: pip install -r stocks_products/requirements.txt
 
       - name: Линтинг
-        run: flake8 logistic/ --exclude=logistic/migrations
+        run: flake8 stocks_products/logistic/ --exclude=stocks_products/logistic/migrations
 
       - name: Тестирование
         run: pythin manage.py test
